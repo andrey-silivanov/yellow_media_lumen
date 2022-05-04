@@ -1,0 +1,55 @@
+version: '3'
+services:
+    php:
+        container_name: lumen_php
+        build:
+            context: ./docker/images/php/8
+            dockerfile: Dockerfile
+        volumes:
+          - ./:/code
+        environment:
+          PHP_IDE_CONFIG: "serverName=Docker"
+        depends_on:
+            - postgres
+        networks:
+            - lumen-test
+
+    nginx:
+      image: nginx:latest
+      container_name: lumen_nginx
+      ports:
+        - "80:80"
+        - "443:443"
+      volumes:
+        - ${APP_PATH}:/code
+        - ./docker/images/nginx/shop.conf:/etc/nginx/conf.d/shop.conf
+      links:
+        - php
+      networks:
+        - lumen-test
+
+    postgres:
+      image: postgres:13.3
+      container_name: lumen_postgres
+      environment:
+        POSTGRES_DB: ${DB_DATABASE}
+        POSTGRES_USER: ${DB_USERNAME}
+        POSTGRES_PASSWORD: ${DB_PASSWORD}
+      ports:
+        - '5432:5432'
+      networks:
+        - lumen-test
+      volumes:
+        - ./docker/volumes/postgresql:/var/lib/postgresql/data
+
+    mailhog:
+        image: 'mailhog/mailhog:latest'
+        ports:
+            - '${FORWARD_MAILHOG_PORT:-1025}:1025'
+            - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
+        networks:
+            - lumen-test
+
+networks:
+  lumen-test:
+        driver: bridge

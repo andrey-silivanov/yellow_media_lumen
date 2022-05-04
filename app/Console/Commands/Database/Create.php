@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Console\Commands\Database;
 
 use Illuminate\Console\Command;
+use PDO;
+use PDOStatement;
 
 /**
  * Class Create
@@ -28,10 +30,10 @@ class Create extends Command
         $dbpass = config("database.connections.{$dfconn}.password");
         $dbname = config("database.connections.{$dfconn}.database");
 
-        $conn = new \PDO(
+        $conn = new PDO(
             "{$driver}:host={$dbhost}", $dbuser, $dbpass
         );
-        /** @var \PDOStatement $statement */
+        /** @var PDOStatement $statement */
         $stmt = $conn->query("CREATE DATABASE {$dbname}");
         if ($stmt) {
             $this->info("Database '{$dbname}' has been created");

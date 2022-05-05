@@ -28,4 +28,35 @@ class CompanyRepository implements CompanyRepositoryInterface
                 $query->where('user_id', '=', $userId);
             })->get()->toArray();
     }
+
+    /**
+     * @param string $phone
+     * @return array|null
+     */
+    public function findByPhone(string $phone): ?array
+    {
+        $result = $this->model->select('id')->where('phone', $phone)->first();
+
+        return $result?->toArray();
+    }
+
+    /**
+     * @param array $attributes
+     * @return array
+     */
+    public function create(array $attributes): array
+    {
+        return $this->model->create($attributes)->toArray();
+    }
+
+    /**
+     * @param int $companyId
+     * @param int $userId
+     * @return void
+     */
+    public function attachUser(int $companyId, int $userId): void
+    {
+        $company = $this->model->find($companyId);
+        $company->users()->syncWithoutDetaching($userId);
+    }
 }

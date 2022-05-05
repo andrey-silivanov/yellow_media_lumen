@@ -23,9 +23,9 @@ class CommandHandler implements CommandHandlerInterface
     /**
      * @param string $commandName
      * @param DtoInterface $dto
-     * @return void
+     * @return mixed
      */
-    public function handle(string $commandName, DtoInterface $dto): void
+    public function handle(string $commandName, DtoInterface $dto): mixed
     {
         /* @var CommandInterface $command */
         try {
@@ -34,6 +34,6 @@ class CommandHandler implements CommandHandlerInterface
             throw new InvalidArgumentException($e->getMessage());
         }
 
-        $command->execute($dto);
+        return $command->execute($dto);
     }
 }

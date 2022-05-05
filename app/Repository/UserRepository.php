@@ -25,4 +25,31 @@ class UserRepository implements UserRepositoryInterface
     {
         return $this->model->create($attributes)->toArray();
     }
+
+    /**
+     * @param string $email
+     * @return array|null
+     */
+    public function findByEmail(string $email): ?array
+    {
+        $result = $this->model->where('email', $email)->first();
+
+        if (null !== $result) {
+            $password = $result->getAuthPassword();
+            $result = $result->toArray();
+            $result['password'] = $password;
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $id
+     * @param string $apiToken
+     * @return void
+     */
+    public function updateApiTokenById(int $id, string $apiToken): void
+    {
+        $this->model->where('id', $id)->update(['api_token' => $apiToken]);
+    }
 }

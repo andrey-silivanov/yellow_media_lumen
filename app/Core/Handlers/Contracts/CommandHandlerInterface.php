@@ -10,7 +10,7 @@ interface CommandHandlerInterface
     /**
      * @param string $commandName
      * @param DtoInterface $dto
-     * @return void
+     * @return mixed
      */
-    public function handle(string $commandName, DtoInterface $dto): void;
+    public function handle(string $commandName, DtoInterface $dto): mixed;
 }

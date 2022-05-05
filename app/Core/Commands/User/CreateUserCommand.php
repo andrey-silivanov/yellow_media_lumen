@@ -8,6 +8,7 @@ use App\Core\Dto\Contracts\DtoInterface;
 use App\Core\Dto\User\CreateUserDto;
 use App\Core\Repository\UserRepositoryInterface;
 use Illuminate\Contracts\Hashing\Hasher as HasherContract;
+use InvalidArgumentException;
 
 class CreateUserCommand implements CommandInterface
 {
@@ -26,6 +27,11 @@ class CreateUserCommand implements CommandInterface
      */
     public function execute(DtoInterface $dto): bool
     {
+        // We check if this is a CreateUserDTO
+        if (!$dto instanceof CreateUserDto) {
+            throw new InvalidArgumentException('CreateUserService needs to receive a CreateUserDto.');
+        }
+
         $this->repository->create([
             'first_name' => $dto->getFirstName(),
             'last_name' => $dto->getLastName(),

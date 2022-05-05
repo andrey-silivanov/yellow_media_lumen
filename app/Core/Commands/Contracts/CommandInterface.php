@@ -9,7 +9,7 @@ interface CommandInterface
 {
     /**
      * @param DtoInterface $dto
-     * @return bool
+     * @return mixed
      */
-    public function execute(DtoInterface $dto): bool;
+    public function execute(DtoInterface $dto): mixed;
 }

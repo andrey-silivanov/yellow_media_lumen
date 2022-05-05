@@ -7,18 +7,19 @@ use App\Core\Commands\User\AuthenticatedUserCommand;
 use App\Core\Dto\User\AuthenticatedUserDto;
 use App\Core\Exceptions\UnauthorizedException;
 use App\Core\Exceptions\UserNotFoundException;
-use App\Core\Handlers\Contracts\CommandHandlerInterface;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class AuthenticatedController extends Controller
 {
-    public function __construct(private CommandHandlerInterface $commandHandler)
-    {
-    }
-
-    public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @throws ValidationException
+     */
+    public function store(Request $request): JsonResponse
     {
         $dto = $this->makeCreateUserDto($request);
 

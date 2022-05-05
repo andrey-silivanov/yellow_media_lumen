@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Core\Commands\User\CreateUserCommand;
-use App\Core\Handlers\Contracts\CommandHandlerInterface;
 use App\Http\Controllers\Controller;
 use App\Core\Dto\User\CreateUserDto;
 use Illuminate\Http\JsonResponse;
@@ -13,13 +12,6 @@ use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
-    /**
-     * @param CommandHandlerInterface $commandHandler
-     */
-    public function __construct(private CommandHandlerInterface $commandHandler)
-    {
-    }
-
     /**
      * @param Request $request
      * @return JsonResponse

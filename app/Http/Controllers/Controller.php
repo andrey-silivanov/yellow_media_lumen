@@ -3,12 +3,20 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Core\Handlers\Contracts\CommandHandlerInterface;
 use Illuminate\Http\JsonResponse;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class Controller extends BaseController
 {
+    /**
+     * @param CommandHandlerInterface $commandHandler
+     */
+    public function __construct(protected CommandHandlerInterface $commandHandler)
+    {
+    }
+
     /**
      * @param $data
      * @return JsonResponse

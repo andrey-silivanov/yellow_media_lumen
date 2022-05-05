@@ -8,6 +8,8 @@ use Illuminate\Support\ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
+    private const AUTHORIZATION_HEADER = 'Authorization';
+
     /**
      * Register any application services.
      *
@@ -23,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Here you may define how you wish users to be authenticated for your Lumen
         // application. The callback which receives the incoming request instance
@@ -31,8 +33,8 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->input('api_token')) {
-                return User::where('api_token', $request->input('api_token'))->first();
+            if ($request->hasHeader(self::AUTHORIZATION_HEADER)) {
+                return User::where('api_token', $request->header(self::AUTHORIZATION_HEADER))->first();
             }
         });
     }

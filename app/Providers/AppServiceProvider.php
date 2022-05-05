@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Core\Handlers\CommandHandler;
 use App\Core\Handlers\Contracts\CommandHandlerInterface;
+use App\Core\Repository\CompanyRepositoryInterface;
 use App\Core\Repository\UserRepositoryInterface;
+use App\Repository\CompanyRepository;
 use App\Repository\UserRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -19,5 +21,6 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(CommandHandlerInterface::class, CommandHandler::class);
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(CompanyRepositoryInterface::class, CompanyRepository::class);
     }
 }

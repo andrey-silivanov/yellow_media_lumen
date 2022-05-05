@@ -17,12 +17,16 @@ $router->group(['prefix' => '/api/user'], function () use ($router) {
     $router->group(['namespace' => 'Auth'], function () use ($router) {
         $router->post('/register',  'RegisterController@store');
         $router->post('/sign-in',  'AuthenticatedController@store');
+        $router->post('/recover-password', 'PasswordResetLinkController@store');
+        $router->patch('/recover-password', 'NewPasswordController@store');
     });
 
     $router->group(['middleware' => 'auth'], function () use ($router) {
         $router->get('/companies',  'CompanyController@index');
+        $router->post('/companies',  'CompanyController@store');
     });
 });
+
 
 
 

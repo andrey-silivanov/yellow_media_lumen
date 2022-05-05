@@ -30,7 +30,7 @@ class UserRepository implements UserRepositoryInterface
      * @param string $email
      * @return array|null
      */
-    public function findByEmail(string $email): ?array
+    public function findByEmailWithPassword(string $email): ?array
     {
         $result = $this->model->where('email', $email)->first();
 
@@ -41,6 +41,17 @@ class UserRepository implements UserRepositoryInterface
         }
 
         return $result;
+    }
+
+    /**
+     * @param string $email
+     * @return array|null
+     */
+    public function findByEmail(string $email): ?array
+    {
+        $result = $this->model->where('email', $email)->first();
+
+        return $result?->toArray();
     }
 
     /**

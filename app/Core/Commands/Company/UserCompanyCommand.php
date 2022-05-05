@@ -26,7 +26,7 @@ class UserCompanyCommand implements CommandInterface
     {
         // We check if this is a AuthUserDto
         if (!$dto instanceof AuthUserDto) {
-            throw new InvalidArgumentException('CreateUserService needs to receive a CreateUserDto.');
+            throw new InvalidArgumentException('UserCompanyCommand needs to receive a AuthUserDto.');
         }
 
         return $this->repository->findCompanyByUserId($dto->getId());

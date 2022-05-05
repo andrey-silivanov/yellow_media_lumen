@@ -28,4 +28,19 @@ class Controller extends BaseController
             'data' => $data
         ]);
     }
+
+    /**
+     * @param string $message
+     * @param int $code
+     * @return JsonResponse
+     */
+    protected function errorJsonResponse(string $message, int $code): JsonResponse
+    {
+        return response()->json([
+            'error' => [
+                'code'    => $code,
+                'message' => $message,
+            ]
+        ]);
+    }
 }

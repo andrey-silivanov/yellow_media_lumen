@@ -26,7 +26,7 @@ class AddCompanyCommand implements CommandInterface
     {
         // We check if this is a AddCompanyDto
         if (!$dto instanceof AddCompanyDto) {
-            throw new InvalidArgumentException('CreateUserService needs to receive a CreateUserDto.');
+            throw new InvalidArgumentException('AddCompanyCommand needs to receive a AddCompanyDto.');
         }
 
         $company = $this->repository->findByPhone($dto->getPhone());

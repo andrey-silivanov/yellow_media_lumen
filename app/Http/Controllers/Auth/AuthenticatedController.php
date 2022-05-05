@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class AuthenticatedController extends Controller
 {
@@ -26,15 +27,10 @@ class AuthenticatedController extends Controller
         try {
             $apiToken = $this->commandHandler->handle(AuthenticatedUserCommand::class, $dto);
         } catch (UserNotFoundException | UnauthorizedException) {
-            return response()->json([
-                'error' => [
-                    'code' => 401,
-                    'message' => "Unauthorized",
-                ]
-            ], 401);
+            return $this->errorJsonResponse("Unauthorized", ResponseAlias::HTTP_UNAUTHORIZED);
         }
 
-        return $this->successJsonResponse($apiToken);
+        return $this->successJsonResponse(['token' => $apiToken]);
     }
 
     /**

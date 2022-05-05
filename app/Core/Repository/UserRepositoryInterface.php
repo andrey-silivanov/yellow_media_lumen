@@ -18,6 +18,12 @@ interface UserRepositoryInterface
     public function findByEmail(string $email): ?array;
 
     /**
+     * @param string $email
+     * @return null|array
+     */
+    public function findByEmailWithPassword(string $email): ?array;
+
+    /**
      * @param int $id
      * @param string $apiToken
      * @return void

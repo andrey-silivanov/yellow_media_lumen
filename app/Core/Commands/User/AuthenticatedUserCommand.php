@@ -37,7 +37,7 @@ class AuthenticatedUserCommand implements CommandInterface
             throw new InvalidArgumentException('CreateUserService needs to receive a AuthenticatedUserDto.');
         }
 
-        $user = $this->repository->findByEmail($dto->getEmail());
+        $user = $this->repository->findByEmailWithPassword($dto->getEmail());
         if (null === $user) {
             throw new UserNotFoundException();
         }

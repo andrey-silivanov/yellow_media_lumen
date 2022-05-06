@@ -1,0 +1,266 @@
+{
+	"info": {
+		"_postman_id": "7bb7a211-f623-4f8e-818f-6f42dd1e284c",
+		"name": "yellow-media",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "lumen-test.local/api/user/sign-in",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@mail.com\",\n\t\"password\": \"secret\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "lumen-test.local/api/user/sign-in",
+					"host": [
+						"lumen-test",
+						"local"
+					],
+					"path": [
+						"api",
+						"user",
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lumen-test.local/api/user/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Doe\",\n    \"phone\": \"12345678901\",\n\t\"email\": \"test2@mail.com\",\n\t\"password\": \"secret\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "lumen-test.local/api/user/register",
+					"host": [
+						"lumen-test",
+						"local"
+					],
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lumen-test.local/api/user/companies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "6cbf1f632214e0a2980db8647ef24e9f7977f65f8c9dca5cd5af61a2724ee6878a2bec518e1e0cba68fff613882b4b7987f09a81cdb2c66791be700f3b3bbf60",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "lumen-test.local/api/user/companies",
+					"host": [
+						"lumen-test",
+						"local"
+					],
+					"path": [
+						"api",
+						"user",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lumen-test.local/api/user/companies",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "6cbf1f632214e0a2980db8647ef24e9f7977f65f8c9dca5cd5af61a2724ee6878a2bec518e1e0cba68fff613882b4b7987f09a81cdb2c66791be700f3b3bbf60",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"test2\",\n\t\"phone\": \"12345678932\",\n    \"description\": \"description\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "lumen-test.local/api/user/companies",
+					"host": [
+						"lumen-test",
+						"local"
+					],
+					"path": [
+						"api",
+						"user",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lumen-test.local/api/user/recover-password",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "95fecd42f2df8fa6166c9c1a5ac43265e5b37636c25e48b4b920c136886b487da371f9837a6c168bc0581d5dfa942a9b33a46b741eca040d7a92f00bae19b5da",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@mail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "lumen-test.local/api/user/recover-password",
+					"host": [
+						"lumen-test",
+						"local"
+					],
+					"path": [
+						"api",
+						"user",
+						"recover-password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lumen-test.local/api/user/recover-password",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "95fecd42f2df8fa6166c9c1a5ac43265e5b37636c25e48b4b920c136886b487da371f9837a6c168bc0581d5dfa942a9b33a46b741eca040d7a92f00bae19b5da",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@mail.com\",\n    \"password\": \"secret\",\n    \"token\": \"ce9322ddb1bb82cd2c1c85ed91756fe0714006ba28e526eaa02ec9c93a9b0478\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "lumen-test.local/api/user/recover-password",
+					"host": [
+						"lumen-test",
+						"local"
+					],
+					"path": [
+						"api",
+						"user",
+						"recover-password"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
